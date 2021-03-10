@@ -7,7 +7,7 @@ var LED = new Gpio(4, 'out'); //use GPIO pin 4 as output
 var pushButton = new Gpio(17, 'in', 'both'); //use GPIO pin 17 as input, and 'both' button presses, and releases should be handled
 
 http.listen(80); //listen to port 80
-shell.exec('chromium-browser --disable-infobars --kiosk "http://localhost"')
+shell.exec('chromium-browser --noerrdialogs --disable-infobars --kiosk "http://localhost"')
 
 function handler (req, res) { //create server
   fs.readFile(__dirname + '/public/index.htm', function(err, data) { //read file index.html in public folder
