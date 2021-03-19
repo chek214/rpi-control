@@ -13,7 +13,7 @@ var app = express();
 app.use(express.static(__dirname + 'public')); //Serves resources from public folder
 
 
-var server = app.listen(5000);
+var server = app.listen(80);
 
 
 // app.get('/', (req, res) => {
