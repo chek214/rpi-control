@@ -10,10 +10,13 @@ var express = require('express');
 var app = express();
 
 
-app.use(express.static(__dirname + 'public')); //Serves resources from public folder
+app.get('/', function(req, res) {
+  res.sendFile(path.join(public, 'index.html'));
+});
 
+app.use('/', express.static(public));
 
-var server = app.listen(80);
+app.listen(80);
 
 
 // app.get('/', (req, res) => {
