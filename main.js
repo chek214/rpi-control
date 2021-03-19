@@ -17,6 +17,15 @@ function handler (req, res) { //create server
     res.write(data); //write data from index.html
     return res.end();
   });
+  fs.readFile(__dirname + '/public/background.jpg', function(err, data) { //read file index.html in public folder
+    if (err) {
+      res.writeHead(404, {'Content-Type': 'text/html'}); //display 404 on error
+      return res.end("404 Not Found");
+    }
+    res.writeHead(200, {'Content-Type': 'image/jpeg'}); //write HTML
+    res.write(data); //write data from index.html
+    return res.end();
+  });
 }
 
 io.sockets.on('connection', function (socket) {// WebSocket Connection
