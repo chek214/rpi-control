@@ -6,8 +6,8 @@ var io = require('socket.io')(http) //require socket.io module and pass the http
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var LED = new Gpio(4, 'out'); //use GPIO pin 4 as output
 var pushButton = new Gpio(17, 'in', 'both'); //use GPIO pin 17 as input, and 'both' button presses, and releases should be handled
-
-
+var path = require('path');
+var public = path.join(__dirname, 'public');
 
 
 
