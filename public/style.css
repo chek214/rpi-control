@@ -1,0 +1,34 @@
+body {
+    background-image: url('background.jpg'); 
+    background-repeat: no-repeat; 
+    width: 155mm; 
+    height: 86mm; 
+    background-size: 155mm 86mm;
+  }
+
+  .buttonrow {
+    position: absolute; 
+    top: 82mm; 
+    left: 0mm; 
+    width: 155mm; 
+    height: 16mm; 
+    display:flex;
+  }
+
+  .buttondiv {
+    width: 31mm; 
+    height: 16mm; 
+    text-align: center;
+  }
+
+  .buttonhelper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  .buttonimg {
+    width: 18mm; 
+    height: 12mm; 
+    vertical-align: middle;
+  }
