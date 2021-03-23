@@ -7,11 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <title>Control</title>
 </head>
-<body>
-  <div id="app">
-    {{ message }}
-  </div>
+<body id="app">
   <div class="buttonrow">
+    <div v-for="button in buttons" class="buttondiv"></div>
     <div class="buttondiv"><span class="buttonhelper"></span><img src="poweron.svg" alt="Ajustes" class="buttonimg"></div>
     <div class="buttondiv"><span class="buttonhelper"></span><img src="poweroff.svg" alt="Ajustes" class="buttonimg"></div>
     <div class="buttondiv"><span class="buttonhelper"></span></div>
@@ -26,7 +24,28 @@
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello Vue!'
+    buttons: [
+      {
+        img: 'poweron.svg',
+        alt: 'Encender',
+      },
+      {
+        img: 'poweroff.svg',
+        alt: 'Apagar',
+      },
+      {
+        img: '',
+        alt: '',
+      },
+      {
+        img: '',
+        alt: '',
+      },
+      {
+        img: 'settings.svg',
+        alt: 'Ajustes',
+      }    
+    ]
   }
 })
 </script>
