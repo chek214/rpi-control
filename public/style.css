@@ -2,8 +2,8 @@ body {
     background-image: url('background.jpg'); 
     background-repeat: no-repeat; 
     width: 155mm; 
-    height: 86mm; 
-    background-size: 155mm 86mm;
+    height: 96mm; 
+    background-size: 155mm 96mm;
   }
 
   .buttonrow {
