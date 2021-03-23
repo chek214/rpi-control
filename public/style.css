@@ -1,22 +1,22 @@
 body {
     background-image: url('background.jpg'); 
     background-repeat: no-repeat; 
-    width: 155mm; 
-    height: 96mm; 
-    background-size: 155mm 96mm;
+    width: 168mm; 
+    height: 100mm; 
+    background-size: 168mm 100mm;
   }
 
   .buttonrow {
     position: absolute; 
-    top: 82mm; 
+    top: 96mm; 
     left: 0mm; 
-    width: 155mm; 
+    width: 168mm; 
     height: 16mm; 
     display:flex;
   }
 
   .buttondiv {
-    width: 31mm; 
+    width: 36mm; 
     height: 16mm; 
     text-align: center;
   }
