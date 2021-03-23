@@ -10,7 +10,7 @@
 <body>
   <div id="app">
   <div class="buttonrow">
-    <div v-for="button in buttons" class="buttondiv"></div>
+    <div v-for="button in buttons" class="buttondiv"><span class="buttonhelper"></span><img :src="button.img" :alt="button.alt" class="buttonimg"></div>
     <div class="buttondiv"><span class="buttonhelper"></span><img src="poweron.svg" alt="Ajustes" class="buttonimg"></div>
     <div class="buttondiv"><span class="buttonhelper"></span><img src="poweroff.svg" alt="Ajustes" class="buttonimg"></div>
     <div class="buttondiv"><span class="buttonhelper"></span></div>
