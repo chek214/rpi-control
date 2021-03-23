@@ -33,7 +33,7 @@ body {
     vertical-align: middle;
   }
 
-  .buttonimg:active {
+  .buttonimg:active .buttonimg:hover {
     width: 22mm; 
     height: 15mm; 
     background-color: blue;
