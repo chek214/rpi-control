@@ -8,6 +8,9 @@
     <title>Control</title>
 </head>
 <body>
+  <div id="app">
+    {{ message }}
+  </div>
   <div class="buttonrow">
     <div class="buttondiv"><span class="buttonhelper"></span><img src="poweron.svg" alt="Ajustes" class="buttonimg"></div>
     <div class="buttondiv"><span class="buttonhelper"></span><img src="poweroff.svg" alt="Ajustes" class="buttonimg"></div>
@@ -15,7 +18,15 @@
     <div class="buttondiv"><span class="buttonhelper"></span></div>
     <div class="buttondiv"><span class="buttonhelper"></span><img src="settings.svg" alt="Ajustes" class="buttonimg"></div>
   </div> 
+
 <script src="socket.io/socket.io.js"></script>
 <script src="socket.io/program.js"></script>
+<script src="vue.js"></script>
+<script> var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
+})</script>
 </body>
 </html>
