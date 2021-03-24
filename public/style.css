@@ -1,4 +1,9 @@
-body {
+  body {
+    width: 165mm; 
+    height: 105mm; 
+  }
+
+  #app {
     background-image: url('background.jpg'); 
     background-repeat: no-repeat; 
     width: 165mm; 
