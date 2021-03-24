@@ -16,7 +16,7 @@
   </div>
   <div v-if="settings">
     <div class="buttondiv"><span class="buttonhelper"></span><img src="back.png" alt="" class="backbuttonimg" @click="backtomain()"></div>
-    <div>envases por charola<input type="number" name="envases" placeholder="1"></div>
+    <div>envases por charola<input class="envases" type="number" name="envases" placeholder="1" v-model="envases"></div>
   </div>
 </div>  
 
@@ -56,6 +56,7 @@ var app = new Vue({
       }    
     ],
     settings: false,
+    envases: 1,
   },
   methods: {
     gosettings: function () {

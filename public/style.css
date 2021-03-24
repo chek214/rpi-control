@@ -50,3 +50,8 @@
     background-color: blue;
     vertical-align: middle;
   }
+
+  .envases {
+    width: 35mm;
+    text-align: center;
+  }
