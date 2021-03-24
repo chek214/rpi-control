@@ -1,7 +1,7 @@
 var express = require('express');
 var app     = express();
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
+const http = require('http').Server(app);
+var io = require('socket.io')(http);
 var fs = require('fs'); //require filesystem module
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var banda = new Gpio(4, 'out'); //use GPIO pin 4 as output
