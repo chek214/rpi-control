@@ -1,8 +1,8 @@
-var http = require('http')//.createServer(handler); //require http server, and create server with function handler()
 var express = require('express');
-var app = express();
+var app     = express();
+var server  = app.listen(1337);
+var io      = require('socket.io').listen(server);
 var fs = require('fs'); //require filesystem module
-var io = require('socket.io')(http) //require socket.io module and pass the http object (server)
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var banda = new Gpio(4, 'out'); //use GPIO pin 4 as output
 var pushButton = new Gpio(17, 'in', 'both'); //use GPIO pin 17 as input, and 'both' button presses, and releases should be handled
@@ -27,7 +27,7 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
       return;
     }
     lightvalue = value;
-    socket.emit('light', lightvalue); //send button status to client
+    socket.emit('poweron', 1); //send button status to client
   });
 
   /*socket.on('light', function(data) { //get light switch status from client
