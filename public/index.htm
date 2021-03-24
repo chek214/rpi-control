@@ -8,14 +8,16 @@
     <title>Control</title>
 </head>
 <body>
-  <div v-if="settings">
-    <img src="poweron.svg" alt="" class="buttonimg" @click="backtomain()">
-  </div>  
-  <div id="app" v-if="!settings">
-  <div class="buttonrow">
-    <div v-for="button in buttons" class="buttondiv"><span class="buttonhelper"></span><img :src="button.img" :alt="button.alt" class="buttonimg" @click="buttonaction(button.id)"></div>
-  </div> 
+  <div id="app">
+   <div v-if="!settings" id="main">
+    <div class="buttonrow">
+      <div v-for="button in buttons" class="buttondiv"><span class="buttonhelper"></span><img :src="button.img" :alt="button.alt" class="buttonimg" @click="buttonaction(button.id)"></div>
+    </div> 
   </div>
+  <div v-if="settings">
+    <div class="buttondiv"><span class="buttonhelper"></span><img src="settings.svg" alt="" class="buttonimg" @click="backtomain()"></div>
+  </div>
+</div>  
 
 <script src="socket.io/socket.io.js"></script>
 <script src="socket.io/program.js"></script>
