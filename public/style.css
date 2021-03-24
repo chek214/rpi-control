@@ -38,6 +38,12 @@
     vertical-align: middle;
   }
 
+  .backbuttonimg {
+    width: 18mm; 
+    height: 15mm; 
+    vertical-align: middle;
+  }
+
   .buttonimg:active .buttonimg:hover {
     width: 22mm; 
     height: 15mm; 
