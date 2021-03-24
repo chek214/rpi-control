@@ -30,12 +30,12 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
     socket.emit('light', lightvalue); //send button status to client
   });
 
-  socket.on('light', function(data) { //get light switch status from client
+  /*socket.on('light', function(data) { //get light switch status from client
     lightvalue = data;
     if (lightvalue != LED.readSync()) { //only change LED if status has changed
       LED.writeSync(lightvalue); //turn LED on or off
     }
-  });
+  });*/
 
   socket.on('poweron', function(data) { 
     banda.writeSync(1)
@@ -50,8 +50,8 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
 });
 
 process.on('SIGINT', function () { //on ctrl+c
-  LED.writeSync(0); // Turn LED off
-  LED.unexport(); // Unexport LED GPIO to free resources
+  banda.writeSync(0); // Turn LED off
+  banda.unexport(); // Unexport LED GPIO to free resources
   pushButton.unexport(); // Unexport Button GPIO to free resources
   process.exit(); //exit completely
 }); 
