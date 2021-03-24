@@ -39,10 +39,12 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
 
   socket.on('poweron', function(data) { 
     banda.writeSync(1)
+    console.log('poweron')
   });
 
   socket.on('poweroff', function(data) { 
     banda.writeSync(0)
+    console.log('poweroff')
   });
 
 });
