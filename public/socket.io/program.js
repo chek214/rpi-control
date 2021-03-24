@@ -1,8 +1,8 @@
 var socket = io(); 
 window.addEventListener("load", function(){ //when page loads
-  var lightbox = document.getElementById("light");
-  lightbox.addEventListener("change", function() { //add event listener for when checkbox changes
-    socket.emit("light", Number(this.checked)); //send button status to server (as 1 or 0)
+  var poweron = document.getElementById("poweron");
+  poweron.addEventListener("click", function() { //add event listener for when checkbox changes
+    socket.emit("poweron", Number(1)); 
   });
 });
 socket.on('light', function (data) { //get button status from client

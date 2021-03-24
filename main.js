@@ -54,12 +54,18 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
     lightvalue = value;
     socket.emit('light', lightvalue); //send button status to client
   });
+
   socket.on('light', function(data) { //get light switch status from client
     lightvalue = data;
     if (lightvalue != LED.readSync()) { //only change LED if status has changed
       LED.writeSync(lightvalue); //turn LED on or off
     }
   });
+
+  socket.on('poweron', function(data) { 
+    
+  });
+
 });
 
 process.on('SIGINT', function () { //on ctrl+c

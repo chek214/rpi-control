@@ -11,7 +11,7 @@
   <div id="app">
    <div v-if="!settings" id="main">
     <div class="buttonrow">
-      <div v-for="button in buttons" class="buttondiv"><span class="buttonhelper"></span><img :src="button.img" :alt="button.alt" class="buttonimg" @click="buttonaction(button.id)"></div>
+      <div v-for="button in buttons" class="buttondiv" :id="button.name"><span class="buttonhelper"></span><img :src="button.img" :alt="button.alt" class="buttonimg" @click="buttonaction(button.id)"></div>
     </div> 
   </div>
   <div v-if="settings">
@@ -30,26 +30,31 @@ var app = new Vue({
     buttons: [
       {
         id: 1,
+        name: 'poweron',
         img: 'poweron.svg',
         alt: 'Encender',
       },
       {
         id: 2,
+        name: 'poweroff',
         img: 'poweroff.svg',
         alt: 'Apagar',
       },
       {
         id: 3,
+        name: '',
         img: '',
         alt: '',
       },
       {
         id: 4,
+        name: '',
         img: '',
         alt: '',
       },
       {
         id: 5,
+        name: '',
         img: 'settings.svg',
         alt: 'Ajustes',
         onclick: 'gosettings()'
