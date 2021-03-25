@@ -1,5 +1,6 @@
 var http = require('http').createServer(handler); //require http server, and create server with function handler()
 var express = require('express');
+var path = require('path');
 var public = path.join(__dirname, 'public');
 var app     = express();
 var fs = require('fs'); //require filesystem module
