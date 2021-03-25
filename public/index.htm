@@ -9,12 +9,12 @@
 </head>
 <body>
   <div id="app">
-   <div v-if="!settings" id="main">
+   <div v-show="!settings" id="main">
     <div class="buttonrow">
       <div v-for="button in buttons" class="buttondiv" :id="button.name"><span class="buttonhelper"></span><img :src="button.img" :alt="button.alt" class="buttonimg" @click="buttonaction(button.id)"></div>
     </div> 
   </div>
-  <div v-if="settings">
+  <div v-show="settings">
     <div class="buttondiv"><span class="buttonhelper"></span><img src="back.png" alt="" class="backbuttonimg" @click="backtomain()"></div>
     <div>envases por charola<input class="envases" type="number" name="envases" placeholder="1" v-model="envases"></div>
   </div>
