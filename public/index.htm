@@ -1,83 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Control</title>
-</head>
+ <!DOCTYPE html>
+<html>
 <body>
-  <div id="app">
-   <div v-if="!settings" id="main">
-    <div class="buttonrow">
-      <div v-for="button in buttons" class="buttondiv" :id="button.name"><span class="buttonhelper"></span><img :src="button.img" :alt="button.alt" class="buttonimg" @click="buttonaction(button.id)"></div>
-    </div> 
-  </div>
-  <div v-if="settings">
-    <div class="buttondiv"><span class="buttonhelper"></span><img src="back.png" alt="" class="backbuttonimg" @click="backtomain()"></div>
-    <div>envases por charola<input class="envases" type="number" name="envases" placeholder="1" v-model="envases"></div>
-  </div>
-</div>  
 
-<script src="socket.io/socket.io.js"></script>
-<script src="socket.io/program.js"></script>
-<script src="vue.js"></script>
-<script> 
-var app = new Vue({
-  el: '#app',
-  data: {
-    buttons: [
-      {
-        id: 1,
-        name: 'poweron',
-        img: 'poweron.svg',
-        alt: 'Encender',
-      },
-      {
-        id: 2,
-        name: 'poweroff',
-        img: 'poweroff.svg',
-        alt: 'Apagar',
-      },
-      {
-        id: 3,
-        name: '',
-        img: '',
-        alt: '',
-      },
-      {
-        id: 4,
-        name: '',
-        img: '',
-        alt: '',
-      },
-      {
-        id: 5,
-        name: '',
-        img: 'settings.svg',
-        alt: 'Ajustes',
-        onclick: 'gosettings()'
-      }    
-    ],
-    settings: false,
-    envases: 1,
-  },
-  methods: {
-    gosettings: function () {
-      this.settings = true
-    },
-    backtomain: function () {
-      this.settings = false
-    },
-    buttonaction: function (id) {
-      if (id == 5) {
-        this.settings = true
-      }
-      console.log(id)
-    }
-  }
-})
+<h1>Control LED light</h1>
+<p><input type="checkbox" id="light"></p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script> <!-- include socket.io client side script -->
+<script>
+var socket = io(); //load socket.io-client and connect to the host that serves the page
+window.addEventListener("load", function(){ //when page loads
+  var lightbox = document.getElementById("light");
+  lightbox.addEventListener("change", function() { //add event listener for when checkbox changes
+    socket.emit("light", Number(this.checked)); //send button status to server (as 1 or 0)
+  });
+});
+socket.on('light', function (data) { //get button status from client
+  document.getElementById("light").checked = data; //change checkbox according to push button on Raspberry Pi
+  socket.emit("light", data); //send push button status to back to server
+});
 </script>
+
 </body>
-</html>
+</html> 
