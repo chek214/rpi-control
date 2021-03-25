@@ -49,6 +49,16 @@ io.sockets.on('connection', function (socket) {// WebSocket Connection
       LED.writeSync(lightvalue); //turn LED on or off
     }
   });
+
+  socket.on('poweron', function(data) { 
+    banda.writeSync(1)
+    console.log('poweron')
+  });
+
+  socket.on('poweroff', function(data) { 
+    banda.writeSync(0)
+    console.log('poweroff')
+  });
 });
 
 process.on('SIGINT', function () { //on ctrl+c
