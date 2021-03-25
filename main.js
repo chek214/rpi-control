@@ -9,7 +9,11 @@ var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 var LED = new Gpio(4, 'out'); //use GPIO pin 4 as output
 var pushButton = new Gpio(17, 'in', 'both'); //use GPIO pin 17 as input, and 'both' button presses, and releases should be handled
 
-//http.listen(80); //listen to port 8080
+//http.listen(80); //listen to port 80
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(public, 'index.htm'));
+});
 
 app.use('/', express.static(public));
 
