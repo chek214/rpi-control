@@ -1,4 +1,6 @@
 var http = require('http').createServer(handler); //require http server, and create server with function handler()
+var express = require('express');
+var app     = express();
 var fs = require('fs'); //require filesystem module
 var io = require('socket.io')(http, {
   allowEIO3: true 
