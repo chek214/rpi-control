@@ -28,7 +28,7 @@ io.sockets.on('connection', function (socket) {
   socket.on('poweron', function(data) {
     power = true
     console.log('poweron')
-    while (power) {
+    //while (power) {
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
         moveband()
         console.log('move band')
@@ -43,7 +43,7 @@ io.sockets.on('connection', function (socket) {
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 1) {
         console.log('do nothing 1 1')
       }
-    }
+    //}
     
   })
 
