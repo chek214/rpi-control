@@ -38,10 +38,10 @@ io.sockets.on('connection', function (socket) {
         console.log('fill')
       }
       else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
-        console.log('do nothing')
+        console.log('do nothing 0 1')
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 1) {
-        console.log('do nothing')
+        console.log('do nothing 1 1')
       }
     }
     
