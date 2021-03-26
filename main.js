@@ -29,6 +29,14 @@ io.sockets.on('connection', function (socket) {
     power = true
     console.log('poweron')
     while (power) {
+      
+      socket.on('poweroff', function(data) { 
+        band.writeSync(0)
+        fill.writeSync(0)
+        power = false
+        console.log('poweroff')
+      })
+
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
         moveband()
         console.log('move band')
