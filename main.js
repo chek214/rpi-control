@@ -30,11 +30,11 @@ io.sockets.on('connection', function (socket) {
     console.log('poweron')
     //while (power) {
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
-        moveband()
+        setTimeout(moveband(), 1000)
         console.log('move band')
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
-        fillf()
+        setTimeout(fillf(), 1000)
         console.log('fill')
       }
       else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
@@ -63,8 +63,8 @@ function moveband() {
 
 function fillf() {
   fill.writeSync(1)
-  setTimeout(fill.writeSync(0), 1000)
 }
+
 
 
 process.on('SIGINT', function () { 
