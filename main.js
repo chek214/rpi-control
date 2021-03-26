@@ -14,6 +14,8 @@ var fill             = new Gpio(17, 'out')
 var fillsensor       = new Gpio(27, 'in', 'both') 
 var arrivalsensor    = new Gpio(22, 'in', 'both') 
 
+var power            = false
+
 http.listen(80)
 
 app.get('/', function(req, res) {
@@ -23,16 +25,44 @@ app.get('/', function(req, res) {
 app.use('/', express.static(public))
 
 io.sockets.on('connection', function (socket) {
-  socket.on('poweron', function(data) { 
-    band.writeSync(1)
+  socket.on('poweron', function(data) {
+    power = true
     console.log('poweron')
-  });
+    while (power) {
+      if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
+        moveband()
+      }
+      else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
+        fillf()
+      }
+      else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
+        
+      }
+      else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 1) {
+        
+      }
+    }
+    
+  })
 
   socket.on('poweroff', function(data) { 
     band.writeSync(0)
+    fill.writeSync(0)
+    power = false
     console.log('poweroff')
   })
 })
+
+function moveband() {
+  band.writeSync(1)
+  setTimeout(band.writeSync(0), 1000)
+}
+
+function fillf() {
+  fill.writeSync(1)
+  setTimeout(fill.writeSync(0), 1000)
+}
+
 
 process.on('SIGINT', function () { 
   band.writeSync(0) 
