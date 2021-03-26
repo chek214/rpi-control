@@ -31,15 +31,17 @@ io.sockets.on('connection', function (socket) {
     while (power) {
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
         moveband()
+        console.log('move band')
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
         fillf()
+        console.log('fill')
       }
       else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
-        
+        console.log('do nothing')
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 1) {
-        
+        console.log('do nothing')
       }
     }
     
