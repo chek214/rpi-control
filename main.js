@@ -30,11 +30,11 @@ io.sockets.on('connection', function (socket) {
     console.log('poweron')
     //while (power) {
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
-        setTimeout(moveband(), 1000)
+        setTimeout(moveband, 1000)
         console.log('move band')
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
-        setTimeout(fillf(), 1000)
+        setTimeout(fillf, 1000)
         console.log('fill')
       }
       else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
