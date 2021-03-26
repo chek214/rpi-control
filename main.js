@@ -9,10 +9,10 @@ var io = require('socket.io')(http, {
 })
 var Gpio = require('onoff').Gpio
 
-var band             = new Gpio(4, 'out')
-var fill             = new Gpio(17, 'out')
-var fillsensor       = new Gpio(27, 'in', 'both') 
-var arrivalsensor    = new Gpio(22, 'in', 'both') 
+var band             = new Gpio(22, 'out')
+var fill             = new Gpio(27, 'out')
+var fillsensor       = new Gpio(4, 'in', 'both') 
+var arrivalsensor    = new Gpio(17, 'in', 'both') 
 
 var power            = false
 
