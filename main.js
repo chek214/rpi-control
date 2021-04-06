@@ -61,12 +61,12 @@ io.sockets.on('connection', function (socket) {
 })
 
 function stopband() {
-  band.writeSync(1)
+  band.writeSync(0)
   //setTimeout(band.writeSync(0), 1000)
 }
 
 function stopfill() {
-  fill.writeSync(1)
+  fill.writeSync(0)
 }
 
 
