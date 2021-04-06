@@ -30,12 +30,16 @@ io.sockets.on('connection', function (socket) {
     console.log('poweron')
     //while (power) {
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
-        setTimeout(moveband, 1000)
+        band.writeSync(1)
         console.log('move band')
+        setTimeout(stopband, 1000)
+        console.log('stop band')
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
-        setTimeout(fillf, 1000)
+        fill.writeSync(1)
         console.log('fill')
+        setTimeout(stopfill, 1000)
+        console.log('stop fill')
       }
       else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
         console.log('do nothing 0 1')
@@ -56,12 +60,12 @@ io.sockets.on('connection', function (socket) {
   })
 })
 
-function moveband() {
+function stopband() {
   band.writeSync(1)
   //setTimeout(band.writeSync(0), 1000)
 }
 
-function fillf() {
+function stopfill() {
   fill.writeSync(1)
 }
 
