@@ -25,10 +25,12 @@ app.get('/', function(req, res) {
 app.use('/', express.static(public))
 
 io.sockets.on('connection', function (socket) {
+
+
   socket.on('poweron', function(data) {
     power = true
     console.log('poweron')
-    //while (power) {
+    while (power) {
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
         band.writeSync(1)
         console.log('move band')
@@ -48,7 +50,14 @@ io.sockets.on('connection', function (socket) {
         console.log('do nothing 1 1')
       }
 
-    //}
+      socket.on('poweroff', function(data) { 
+        band.writeSync(0)
+        fill.writeSync(0)
+        power = false
+        console.log('poweroff')
+      })
+
+    }
     
   })
 
