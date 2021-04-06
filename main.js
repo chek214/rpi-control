@@ -58,7 +58,7 @@ io.sockets.on('connection', function (socket) {
 
 function moveband() {
   band.writeSync(1)
-  setTimeout(band.writeSync(0), 1000)
+  //setTimeout(band.writeSync(0), 1000)
 }
 
 function fillf() {
