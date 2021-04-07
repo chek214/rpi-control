@@ -18,15 +18,17 @@ window.addEventListener("load", function(){ //when page loads
       socket.emit('power')
     }
   }, 200)
+  
+  function poweron() {
+    power = true
+    console.log('power on')
+  }
+  
+  function poweroff() {
+    power = false
+    console.log('power off')
+  }
 })
 
-function poweron() {
-  power = true
-  console.log('power on')
-}
 
-function poweroff() {
-  power = false
-  console.log('power off')
-}
 
