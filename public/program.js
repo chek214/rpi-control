@@ -14,7 +14,7 @@ window.addEventListener("load", function(){ //when page loads
     power = false
   })
   setInterval(function(){
-    every200()
+    socket.emit('power', power)
   }, 200)
 
   function poweron() {
@@ -25,12 +25,6 @@ window.addEventListener("load", function(){ //when page loads
   function poweroff() {
     power = false
     console.log('power off')
-  }
-  function every200() {
-    if (power == true)
-    {
-      socket.emit('every200')
-    }
   }
 
 })
