@@ -59,8 +59,8 @@ io.sockets.on('connection', function (socket) {
     console.log('poweroff')
   })
 
-  socket.on('every 200', function(data) {
-    console.log('every 200')    
+  socket.on('power', function(data) {
+    console.log('power' + data)    
 
   })
 })
