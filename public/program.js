@@ -1,20 +1,30 @@
+var power = false
 var socket = io()
 window.addEventListener("load", function(){ //when page loads
   var poweron = document.getElementById("poweron")
   var poweroff = document.getElementById("poweroff")
   poweron.addEventListener("click", function() { 
-    socket.emit("poweron", Number(1))
+    //socket.emit("poweron", Number(1))
     console.log('poweron')
+    power = true
   })
   poweroff.addEventListener("click", function() { 
-    socket.emit("poweroff", Number(1))
+    //socket.emit("poweroff", Number(1))
     console.log('poweroff')
+    power = false
   })
   setInterval(function(){
-    socket.emit('every 200')
+    if (power){
+      socket.emit('power')
+    }
   }, 200)
 })
 
-function power() {
-
+function poweron() {
+  power = true
 }
+
+function poweroff() {
+  power = false
+}
+
