@@ -30,58 +30,25 @@ io.sockets.on('connection', function (socket) {
   socket.on('poweron', function(data) {
     power = true
     console.log('poweron')
-    while (power) {
+
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
         band.writeSync(1)
         console.log('move band')
         setTimeout(stopband, 1000)
         console.log('stop band')
-        socket.on('poweroff', function(data) { 
-          band.writeSync(0)
-          fill.writeSync(0)
-          power = false
-          console.log('poweroff')
-        })
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
         fill.writeSync(1)
         console.log('fill')
         setTimeout(stopfill, 1000)
         console.log('stop fill')
-        socket.on('poweroff', function(data) { 
-          band.writeSync(0)
-          fill.writeSync(0)
-          power = false
-          console.log('poweroff')
-        })
       }
       else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
         console.log('do nothing 0 1')
-        socket.on('poweroff', function(data) { 
-          band.writeSync(0)
-          fill.writeSync(0)
-          power = false
-          console.log('poweroff')
-        })
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 1) {
         console.log('do nothing 1 1')
-        socket.on('poweroff', function(data) { 
-          band.writeSync(0)
-          fill.writeSync(0)
-          power = false
-          console.log('poweroff')
-        })
       }
-
-      socket.on('poweroff', function(data) { 
-        band.writeSync(0)
-        fill.writeSync(0)
-        power = false
-        console.log('poweroff')
-      })
-
-    }
     
   })
 
@@ -91,6 +58,11 @@ io.sockets.on('connection', function (socket) {
     power = false
     console.log('poweroff')
   })
+
+  socket.on('every 200')
+  {
+    console.log('every 200')
+  }
 })
 
 function stopband() {

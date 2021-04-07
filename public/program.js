@@ -10,4 +10,11 @@ window.addEventListener("load", function(){ //when page loads
     socket.emit("poweroff", Number(1))
     console.log('poweroff')
   })
+  setInterval(function(){
+    socket.emit('every 200')
+  }, 200)
 })
+
+function power() {
+
+}
