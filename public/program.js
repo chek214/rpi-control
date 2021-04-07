@@ -14,11 +14,11 @@ window.addEventListener("load", function(){ //when page loads
     power = false
   })
   setInterval(function(){
-    if (power){
+    if (power == true){
       socket.emit('power')
     }
   }, 200)
-  
+
   function poweron() {
     power = true
     console.log('power on')
