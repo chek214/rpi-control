@@ -15,6 +15,7 @@ window.addEventListener("load", function(){ //when page loads
   })
   setInterval(function(){
     socket.emit('power', power)
+    console.log('no funciona')
   }, 200)
 })
 
