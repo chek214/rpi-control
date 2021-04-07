@@ -61,7 +61,26 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('power', function(data) {
     console.log('power' + data)    
-
+    if (data){
+      if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
+        band.writeSync(1)
+        console.log('move band')
+        setTimeout(stopband, 1000)
+        console.log('stop band')
+      }
+      else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
+        fill.writeSync(1)
+        console.log('fill')
+        setTimeout(stopfill, 1000)
+        console.log('stop fill')
+      }
+      else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
+        console.log('do nothing 0 1')
+      }
+      else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 1) {
+        console.log('do nothing 1 1')
+      }
+    }
   })
 })
 
