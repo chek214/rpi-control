@@ -10,12 +10,24 @@
 <body>
   <div id="app">
    <div v-show="!settings" id="main">
+     <div v-if="power">
+       Encendido
+     </div>
+     <div v-if="!power">
+       Apagado
+    </div>
     <div class="buttonrow">
-      <div v-for="button in buttons" class="buttondiv" :id="button.name"><span class="buttonhelper"></span><img :src="button.img" :alt="button.alt" class="buttonimg" @click="buttonaction(button.id)"></div>
+      <div v-for="button in buttons" class="buttondiv" :id="button.name">
+        <span class="buttonhelper"></span>
+        <img :src="button.img" :alt="button.alt" class="buttonimg" @click="buttonaction(button.id)">
+      </div>
     </div> 
   </div>
   <div v-show="settings">
-    <div class="buttondiv"><span class="buttonhelper"></span><img src="back.png" alt="" class="backbuttonimg" @click="backtomain()"></div>
+    <div class="buttondiv">
+      <span class="buttonhelper"></span>
+      <img src="back.png" alt="" class="backbuttonimg" @click="backtomain()">
+    </div>
     <div>envases por charola<input class="envases" type="number" name="envases" placeholder="1" v-model="envases"></div>
   </div>
 </div>  
@@ -62,6 +74,7 @@ var app = new Vue({
     ],
     settings: false,
     envases: 1,
+    power: false
   },
   methods: {
     gosettings: function () {
