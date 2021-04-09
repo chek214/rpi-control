@@ -15,6 +15,7 @@ var fillsensor       = new Gpio(4, 'in', 'both')
 var arrivalsensor    = new Gpio(17, 'in', 'both') 
 
 var power            = false
+var busy             = false
 
 http.listen(80)
 
@@ -56,7 +57,6 @@ io.sockets.on('connection', function (socket) {
     band.writeSync(0)
     fill.writeSync(0)
     power = false
-    busy = false
     console.log('poweroff')
   })
 
