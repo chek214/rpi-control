@@ -56,19 +56,22 @@ io.sockets.on('connection', function (socket) {
     band.writeSync(0)
     fill.writeSync(0)
     power = false
+    busy = false
     console.log('poweroff')
   })
 
   socket.on('power', function(data) {
     console.log('power' + data)    
-    if (data){
+    if (data && !busy){
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
+        busy = true
         band.writeSync(1)
         console.log('move band')
         setTimeout(stopband, 1000)
         console.log('stop band')
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
+        busy = true
         fill.writeSync(1)
         console.log('fill')
         setTimeout(stopfill, 1000)
@@ -86,11 +89,13 @@ io.sockets.on('connection', function (socket) {
 
 function stopband() {
   band.writeSync(0)
+  busy = false
   //setTimeout(band.writeSync(0), 1000)
 }
 
 function stopfill() {
   fill.writeSync(0)
+  busy = false
 }
 
 
