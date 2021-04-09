@@ -14,7 +14,7 @@ window.addEventListener("load", function(){ //when page loads
     //socket.emit("poweroff", Number(1))
     console.log('poweroff')
     power = false
-    app.power = true
+    app.power = false
   })
   setInterval(function(){
     socket.emit('power', power)
