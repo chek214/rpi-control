@@ -85,6 +85,12 @@ io.sockets.on('connection', function (socket) {
       }
     }
   })
+
+  socket.on('bandtime', function(data) {
+    console.log('bandtime' + data)    
+  })
+
+
 })
 
 function stopband() {
