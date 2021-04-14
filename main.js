@@ -34,14 +34,14 @@ io.sockets.on('connection', function (socket) {
     if (data && !busy){
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
         busy = true
-        setTimeout(moveband, bandtime)
+        band.writeSync(1)
         console.log('move band')
         setTimeout(stopband, bandtime)
         console.log('stop band')
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
         busy = true
-        setTimeout(startfill, filltime)
+        fill.writeSync(1)
         console.log('fill')
         setTimeout(stopfill, filltime)
         console.log('stop fill')
