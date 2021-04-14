@@ -18,6 +18,7 @@ var power            = false
 var busy             = false
 
 var bandtime         = 1000
+var filltime         = 1000
 
 http.listen(80)
 
@@ -69,14 +70,14 @@ io.sockets.on('connection', function (socket) {
         busy = true
         band.writeSync(1)
         console.log('move band')
-        setTimeout(stopband, 1000)
+        setTimeout(stopband, bandtime)
         console.log('stop band')
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
         busy = true
         fill.writeSync(1)
         console.log('fill')
-        setTimeout(stopfill, 1000)
+        setTimeout(stopfill, filltime)
         console.log('stop fill')
       }
       else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
@@ -90,6 +91,11 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('bandtime', function(data) {
     console.log('bandtime' + data)    
+
+  })
+
+  socket.on('filltime', function(data) {
+    console.log('filltime' + data)    
 
   })
 
