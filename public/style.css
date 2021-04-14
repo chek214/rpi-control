@@ -55,3 +55,9 @@
     width: 35mm;
     text-align: center;
   }
+
+  .timebutton {
+    width: 25mm;
+    height: 25mm;
+    margin: 5mm 5mm 5mm 5mm;
+  }
