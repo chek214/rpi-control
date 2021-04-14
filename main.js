@@ -37,19 +37,19 @@ io.sockets.on('connection', function (socket) {
         band.writeSync(1)
         console.log('move band')
         await sleep(bandtime)
-        //setTimeout(stopband, bandtime)
         band.writeSync(0)
         console.log('stop band')
+        await sleep(bandtime)
         busy = false
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
         busy = true
         fill.writeSync(1)
         console.log('fill')
-        await sleep(filltime);
-        //setTimeout(stopfill, filltime)
+        await sleep(filltime)
         fill.writeSync(0)
         console.log('stop fill')
+        await sleep(filltime)
         busy = false
       }
       else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
@@ -76,7 +76,7 @@ io.sockets.on('connection', function (socket) {
       setTimeout(resolve, ms)
     })
   } 
-  
+
   socket.on('bandtime', function(data) {
     console.log('bandtime' + data) 
     bandtime = data
@@ -89,29 +89,6 @@ io.sockets.on('connection', function (socket) {
 
 
 })
-
-function stopband() {
-  band.writeSync(0)
-  busy = false
-}
-
-function moveband() {
-  band.writeSync(1)
-  busy = false
-}
-
-band.writeSync(1)
-
-function stopfill() {
-  fill.writeSync(0)
-  busy = false
-}
-
-function startfill() {
-  fill.writeSync(1)
-  busy = false
-}
-
 
 
 process.on('SIGINT', function () { 
