@@ -29,53 +29,19 @@ app.get('/', function(req, res) {
 app.use('/', express.static(public))
 
 io.sockets.on('connection', function (socket) {
-
-
-  socket.on('poweron', function(data) {
-    power = true
-    console.log('poweron')
-
-      if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
-        band.writeSync(1)
-        console.log('move band')
-        setTimeout(stopband, bandtime)
-        console.log('stop band')
-      }
-      else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
-        fill.writeSync(1)
-        console.log('fill')
-        setTimeout(stopfill, 1000)
-        console.log('stop fill')
-      }
-      else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
-        console.log('do nothing 0 1')
-      }
-      else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 1) {
-        console.log('do nothing 1 1')
-      }
-    
-  })
-
-  socket.on('poweroff', function(data) { 
-    band.writeSync(0)
-    fill.writeSync(0)
-    power = false
-    console.log('poweroff')
-  })
-
   socket.on('power', function(data) {
     console.log('power' + data)    
     if (data && !busy){
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
         busy = true
-        band.writeSync(1)
+        setTimeout(moveband, bandtime)
         console.log('move band')
         setTimeout(stopband, bandtime)
         console.log('stop band')
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
         busy = true
-        fill.writeSync(1)
+        setTimeout(startfill, filltime)
         console.log('fill')
         setTimeout(stopfill, filltime)
         console.log('stop fill')
@@ -105,11 +71,22 @@ io.sockets.on('connection', function (socket) {
 function stopband() {
   band.writeSync(0)
   busy = false
-  //setTimeout(band.writeSync(0), 1000)
 }
+
+function moveband() {
+  band.writeSync(1)
+  busy = false
+}
+
+band.writeSync(1)
 
 function stopfill() {
   fill.writeSync(0)
+  busy = false
+}
+
+function startfill() {
+  fill.writeSync(1)
   busy = false
 }
 
