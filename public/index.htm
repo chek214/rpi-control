@@ -94,7 +94,7 @@ var app = new Vue({
       console.log(id)
     },
     btime(tim) {
-      if (bandtime < 500) {
+      if (this.bandtime < 500) {
         this.bandtime += 100 
       }
       else {
@@ -102,7 +102,7 @@ var app = new Vue({
       }
     },
     ftime(tim) {
-      if (filltime < 500) {
+      if (this.filltime < 500) {
         this.filltime += 100 
       }
       else {
@@ -110,7 +110,7 @@ var app = new Vue({
       }
     },
     tray(env) {
-      if (envases < 2) {
+      if (this.envases < 2) {
         this.envases += 1 
       }
       else {
