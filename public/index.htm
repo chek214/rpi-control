@@ -30,7 +30,7 @@
     </div>
     <div>tiempo banda<button class="timebutton" @click="btime(-100)">-</button><button class="timebutton" @click="btime(+100)">+</button>{{bandtime/1000}}</div>
     <div>tiempo llenado<button class="timebutton" @click="ftime(-100)">-</button><button class="timebutton" @click="ftime(+100)">+</button>{{filltime/1000}}</div>
-    <div>envases por charola<input class="envases" type="number" name="envases" placeholder="1" v-model="envases"></div>
+    <div>envases por charola<button class="timebutton" @click="tray(-1)">-</button><button class="timebutton" @click="tray(+1)">+</button>{{envases}}</div>
   </div>
 </div>  
 
@@ -94,10 +94,28 @@ var app = new Vue({
       console.log(id)
     },
     btime(tim) {
-      this.bandtime +=tim 
+      if (bandtime < 500) {
+        this.bandtime += 100 
+      }
+      else {
+        this.bandtime += tim
+      }
     },
     ftime(tim) {
-      this.filltime +=tim 
+      if (filltime < 500) {
+        this.filltime += 100 
+      }
+      else {
+        this.filltime += tim
+      }
+    },
+    tray(env) {
+      if (envases < 2) {
+        this.envases += 1 
+      }
+      else {
+        this.envaes += env
+      }
     }
   }
 })
