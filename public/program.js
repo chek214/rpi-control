@@ -11,14 +11,13 @@ window.addEventListener("load", function(){ //when page loads
     app.power = true
   })
   poweroff.addEventListener("click", function() { 
-    //socket.emit("poweroff", Number(1))
     console.log('poweroff')
     power = false
     app.power = false
   })
   setInterval(function(){
     socket.emit('power', power)
-    console.log('no funciona')
+    socket.emit('bandtime', app.bandtime)
   }, 200)
 })
 

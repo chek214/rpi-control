@@ -29,6 +29,7 @@
       <img src="back.png" alt="" class="backbuttonimg" @click="backtomain()">
     </div>
     <div>envases por charola<input class="envases" type="number" name="envases" placeholder="1" v-model="envases"></div>
+    <div>tiempo<button @click="time(-100)">-</button><button @click="time(+100)">+</button></div>
   </div>
 </div>  
 
@@ -74,7 +75,8 @@ var app = new Vue({
     ],
     settings: false,
     envases: 1,
-    power: false
+    power: false,
+    bandtime: 1000,
   },
   methods: {
     gosettings: function () {
@@ -88,6 +90,9 @@ var app = new Vue({
         this.settings = true
       }
       console.log(id)
+    },
+    time(tim) {
+      this.bandtime +=tim 
     }
   }
 })
