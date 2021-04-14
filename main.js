@@ -29,22 +29,28 @@ app.get('/', function(req, res) {
 app.use('/', express.static(public))
 
 io.sockets.on('connection', function (socket) {
-  socket.on('power', function(data) {
+  socket.on('power', async function(data) {
     console.log('power' + data)    
     if (data && !busy){
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
         busy = true
         band.writeSync(1)
         console.log('move band')
-        setTimeout(stopband, bandtime)
+        await sleep(bandtime)
+        //setTimeout(stopband, bandtime)
+        band.writeSync(0)
         console.log('stop band')
+        busy = false
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
         busy = true
         fill.writeSync(1)
         console.log('fill')
-        setTimeout(stopfill, filltime)
+        await sleep(filltime);
+        //setTimeout(stopfill, filltime)
+        fill.writeSync(0)
         console.log('stop fill')
+        busy = false
       }
       else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
         console.log('do nothing 0 1')
@@ -56,17 +62,29 @@ io.sockets.on('connection', function (socket) {
         band.writeSync(0)
         fill.writeSync(0)
       }
+
+      async function init() {
+        console.log(1);
+        await sleep(1000);
+        console.log(2);
+      }
     }
   })
 
+  function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms)
+    })
+  } 
+  
   socket.on('bandtime', function(data) {
-    console.log('bandtime' + data)    
-
+    console.log('bandtime' + data) 
+    bandtime = data
   })
 
   socket.on('filltime', function(data) {
     console.log('filltime' + data)    
-
+    filltime = data
   })
 
 
