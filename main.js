@@ -48,9 +48,13 @@ io.sockets.on('connection', function (socket) {
       }
       else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
         console.log('do nothing 0 1')
+        band.writeSync(0)
+        fill.writeSync(0)
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 1) {
         console.log('do nothing 1 1')
+        band.writeSync(0)
+        fill.writeSync(0)
       }
     }
   })
