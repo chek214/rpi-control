@@ -17,6 +17,8 @@ var arrivalsensor    = new Gpio(17, 'in', 'both')
 var power            = false
 var busy             = false
 
+var bandtime         = 1000
+
 http.listen(80)
 
 app.get('/', function(req, res) {
@@ -35,7 +37,7 @@ io.sockets.on('connection', function (socket) {
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
         band.writeSync(1)
         console.log('move band')
-        setTimeout(stopband, 1000)
+        setTimeout(stopband, bandtime)
         console.log('stop band')
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
@@ -88,6 +90,7 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('bandtime', function(data) {
     console.log('bandtime' + data)    
+
   })
 
 

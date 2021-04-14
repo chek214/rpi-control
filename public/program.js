@@ -18,6 +18,7 @@ window.addEventListener("load", function(){ //when page loads
   setInterval(function(){
     socket.emit('power', power)
     socket.emit('bandtime', app.bandtime)
+    socket.emit('filltime', app.filltime)
   }, 200)
 })
 
