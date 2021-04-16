@@ -28,6 +28,14 @@ app.get('/', function(req, res) {
 
 app.use('/', express.static(public))
 
+fs.readFile('configs.json', 'utf8' , (err, data) => {
+  if (err) {
+    console.error(err)
+    return
+  }
+  console.log(data)
+})
+
 io.sockets.on('connection', function (socket) {
   socket.on('power', async function(data) {
     console.log('power' + data)    
