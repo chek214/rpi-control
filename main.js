@@ -89,6 +89,10 @@ io.sockets.on('connection', function (socket) {
     filltime = data
   })
 
+  socket.on('saveconfig', function(data) {
+    console.log('configg' + data)    
+  })
+
 
 })
 

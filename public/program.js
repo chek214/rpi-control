@@ -1,5 +1,6 @@
 var power = false
 app.power = false
+var config = "configggg"
 var socket = io()
 window.addEventListener("load", function(){ //when page loads
   var poweron = document.getElementById("poweron")
@@ -14,6 +15,9 @@ window.addEventListener("load", function(){ //when page loads
     console.log('poweroff')
     power = false
     app.power = false
+  })
+  saveconfig.addEventListener("click", function() { 
+    console.log('saveconfig', config)
   })
   setInterval(function(){
     socket.emit('power', power)
