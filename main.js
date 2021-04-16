@@ -70,12 +70,6 @@ io.sockets.on('connection', function (socket) {
         band.writeSync(0)
         fill.writeSync(0)
       }
-
-      async function init() {
-        console.log(1);
-        await sleep(1000);
-        console.log(2);
-      }
     }
   })
 

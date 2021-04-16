@@ -57,13 +57,13 @@ var app = new Vue({
       {
         id: 3,
         name: '',
-        img: '',
+        img: 'white.png',
         alt: '',
       },
       {
         id: 4,
         name: '',
-        img: '',
+        img: 'white.png',
         alt: '',
       },
       {
@@ -94,24 +94,24 @@ var app = new Vue({
       console.log(id)
     },
     btime(tim) {
-      if (this.bandtime < 500) {
-        this.bandtime += 100 
+      if (this.bandtime < 600 && tim < 0) {
+       
       }
       else {
         this.bandtime += tim
       }
     },
     ftime(tim) {
-      if (this.filltime < 500) {
-        this.filltime += 100 
+      if (this.filltime < 600 && tim < 0) {
+        
       }
       else {
         this.filltime += tim
       }
     },
     tray(env) {
-      if (this.envases === 1) {
-        this.envases += 1 
+      if (this.envases === 1 && env < 1) {
+        
       }
       else {
         this.envases += env
