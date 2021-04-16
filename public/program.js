@@ -5,6 +5,7 @@ var socket = io()
 window.addEventListener("load", function(){ //when page loads
   var poweron = document.getElementById("poweron")
   var poweroff = document.getElementById("poweroff")
+  var saveconfig = document.getElementById("saveconfig")
   poweron.addEventListener("click", function() { 
     //socket.emit("poweron", Number(1))
     console.log('poweron')
