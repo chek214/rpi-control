@@ -90,7 +90,14 @@ io.sockets.on('connection', function (socket) {
   })
 
   socket.on('saveconfig', function(data) {
-    console.log('configg' + data)    
+    console.log('configg' + data) 
+    fs.readFile('configs.json', 'utf8' , (err, data) => {
+      if (err) {
+        console.error(err)
+        return
+      }
+      console.log(data)
+    })   
   })
 
 
