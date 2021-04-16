@@ -19,6 +19,7 @@ window.addEventListener("load", function(){ //when page loads
   })
   saveconfig.addEventListener("click", function() { 
     console.log('saveconfig', config)
+    socket.emit('saveconfig', config)
   })
   setInterval(function(){
     socket.emit('power', power)
