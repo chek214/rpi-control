@@ -102,9 +102,10 @@ io.sockets.on('connection', function (socket) {
       configs = data
     })
     fs.writeFile('configs.json', JSON.stringify(configs), function (err) {
-      if (err) return console.log(err);
-      console.log('saved');
-    });   
+      if (err) return console.log(err)
+      console.log('saved')
+      console.log(configs[0])
+    }) 
   })
 
 
