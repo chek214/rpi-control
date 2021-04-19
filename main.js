@@ -98,15 +98,16 @@ io.sockets.on('connection', function (socket) {
         console.error(err)
         return
       }
-      console.log(data)
+      //console.log(data)
       configs = JSON.parse(data)
-    })
-    fs.writeFile('configs.json', JSON.stringify(configs), function (err) {
-      if (err) return console.log(err)
-      console.log('saved')
       console.log(configs)
-      console.log(configs[2])
-    }) 
+    })
+    // fs.writeFile('configs.json', JSON.stringify(configs), function (err) {
+    //   if (err) return console.log(err)
+    //   console.log('saved')
+    //   console.log(configs)
+    //   console.log(configs[2])
+    // }) 
   })
 
 
