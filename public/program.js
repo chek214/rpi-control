@@ -6,6 +6,7 @@ window.addEventListener("load", function(){ //when page loads
   var poweron = document.getElementById("poweron")
   var poweroff = document.getElementById("poweroff")
   var saveconfig = document.getElementById("saveconfig")
+  var saveconfig = document.getElementById("readconfig")
   poweron.addEventListener("click", function() { 
     //socket.emit("poweron", Number(1))
     console.log('poweron')
@@ -20,6 +21,10 @@ window.addEventListener("load", function(){ //when page loads
   saveconfig.addEventListener("click", function() { 
     console.log('saveconfig', config)
     socket.emit('saveconfig', config)
+  })
+  readconfig.addEventListener("click", function() { 
+    console.log('readconfig', config)
+    socket.emit('readconfig', config)
   })
   setInterval(function(){
     socket.emit('power', power)

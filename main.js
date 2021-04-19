@@ -119,6 +119,17 @@ io.sockets.on('connection', function (socket) {
     //console.log(JSON.stringify(configs))
   })
 
+  socket.on('readconfig', function(data) {
+    fs.readFile('configs.json', 'utf8', (err, data) => {
+      if (err) {
+             console.error(err)
+             return
+      }
+      configs = JSON.parse(data)
+      console.log(configs)
+    })
+  })
+
 
 })
 
