@@ -20,6 +20,8 @@ var busy             = false
 var bandtime         = 1000
 var filltime         = 1000
 
+var configs          = {}
+
 http.listen(80)
 
 app.get('/', function(req, res) {
@@ -97,7 +99,12 @@ io.sockets.on('connection', function (socket) {
         return
       }
       console.log(data)
-    })   
+      configs = data
+    })
+    fs.writeFile('configs.json', configs, function (err) {
+      if (err) return console.log(err);
+      console.log('saved');
+    });   
   })
 
 
