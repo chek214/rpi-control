@@ -104,10 +104,10 @@ io.sockets.on('connection', function (socket) {
     //   configs = JSON.parse(data)
     //   console.log(configs)
     // })
-    // fs.writeFile('configs.json', JSON.stringify(configs), function (err) {
-    //    if (err) return console.log(err)
-    //    console.log('saved')
-    // })
+     fs.writeFile('configs.json', JSON.stringify(configs), function (err) {
+        if (err) return console.log(err)
+        console.log('saved')
+     })
     // fs.readFile('configs.json', 'utf8' , (err, data) => {
     //   if (err) {
     //     console.error(err)
@@ -115,8 +115,8 @@ io.sockets.on('connection', function (socket) {
     //   }
     //   configs = JSON.parse(data)
     //   console.log(configs)
-    // }) 
-    console.log(JSON.stringify(configs))
+    //}) 
+    //console.log(JSON.stringify(configs))
   })
 
 
