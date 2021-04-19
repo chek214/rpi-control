@@ -99,7 +99,7 @@ io.sockets.on('connection', function (socket) {
         return
       }
       console.log(data)
-      configs = data
+      configs = JSON.parse(data)
     })
     fs.writeFile('configs.json', JSON.stringify(configs), function (err) {
       if (err) return console.log(err)
