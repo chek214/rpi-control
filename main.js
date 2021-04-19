@@ -35,7 +35,9 @@ fs.readFile('configs.json', 'utf8' , (err, data) => {
     console.error(err)
     return
   }
-  console.log(data)
+  //console.log(data)
+  configs = JSON.parse(data)
+  console.log(configs)
 })
 
 io.sockets.on('connection', function (socket) {
