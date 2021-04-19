@@ -102,12 +102,18 @@ io.sockets.on('connection', function (socket) {
       configs = JSON.parse(data)
       console.log(configs)
     })
-    // fs.writeFile('configs.json', JSON.stringify(configs), function (err) {
-    //   if (err) return console.log(err)
-    //   console.log('saved')
-    //   console.log(configs)
-    //   console.log(configs[2])
-    // }) 
+    fs.writeFile('configs.json', JSON.stringify(configs), function (err) {
+       if (err) return console.log(err)
+       console.log('saved')
+    })
+    fs.readFile('configs.json', 'utf8' , (err, data) => {
+      if (err) {
+        console.error(err)
+        return
+      }
+      configs = JSON.parse(data)
+      console.log(configs)
+    }) 
   })
 
 
