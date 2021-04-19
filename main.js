@@ -104,7 +104,7 @@ io.sockets.on('connection', function (socket) {
     fs.writeFile('configs.json', JSON.stringify(configs), function (err) {
       if (err) return console.log(err)
       console.log('saved')
-      console.log(configs[1])
+      console.log(configs)
       console.log(configs[2])
     }) 
   })
