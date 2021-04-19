@@ -116,6 +116,7 @@ io.sockets.on('connection', function (socket) {
     //   configs = JSON.parse(data)
     //   console.log(configs)
     // }) 
+    console.log(JSON.stringify(configs))
   })
 
 
