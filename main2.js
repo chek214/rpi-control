@@ -20,6 +20,8 @@ var busy             = false
 var bandtime         = 1000
 var filltime         = 1000
 
+var configs           = null
+
 http.listen(80)
 
 app.get('/', function(req, res) {
@@ -30,7 +32,7 @@ app.use('/', express.static(public))
 
 io.sockets.on('connection', function (socket) {
   socket.on('power', async function(data) {
-    console.log('power' + data)    
+    //console.log('power' + data)    
     if (data && !busy){
       // if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
       //   busy = true
@@ -72,14 +74,35 @@ io.sockets.on('connection', function (socket) {
   // } 
 
   socket.on('bandtime', function(data) {
-    console.log('bandtime' + data) 
+    //console.log('bandtime' + data) 
     bandtime = data
   })
 
   socket.on('filltime', function(data) {
-    console.log('filltime' + data)    
+    //console.log('filltime' + data)    
     filltime = data
   })
+
+  socket.on('saveconfig', function(data) {
+    if (configs !== null){
+      fs.writeFile('configs.json', JSON.stringify(configs), function (err) {
+        if (err) return console.log(err)
+        console.log('saved')
+     })
+    }
+    })
+
+    socket.on('readconfig', function(data) {
+      fs.readFile('configs.json', 'utf8', (err, data) => {
+        if (err) {
+              console.error(err)
+              return
+        }
+        configs = JSON.parse(data)
+        console.log(configs.config[0].bandtime)
+      })
+
+    })
 
 
 })
