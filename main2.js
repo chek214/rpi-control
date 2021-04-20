@@ -97,11 +97,12 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('saveconfig', function(data) {
     if (configs !== null){
-      fs.writeFile('configs.json', JSON.stringify(configs), function (err) {
-        if (err) return console.log(err)
-        console.log('saved')
-     })
+    //  fs.writeFile('configs.json', JSON.stringify(configs), function (err) {
+    //    if (err) return console.log(err)
+    //    console.log('saved')
+    // })
     }
+    console.log(data)
     })
 
     socket.on('readconfig', function(data) {
