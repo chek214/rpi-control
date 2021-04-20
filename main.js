@@ -19,8 +19,10 @@ var busy             = false
 
 var bandtime         = 1000
 var filltime         = 1000
+var envases          = 4
 
-var configs          = {}
+var configs          = null
+var sconfig          = null
 
 http.listen(80)
 
@@ -35,12 +37,12 @@ fs.readFile('configs.json', 'utf8' , (err, data) => {
     console.error(err)
     return
   }
-  //console.log(data)
   configs = JSON.parse(data)
-  console.log(configs)
+  sconfig = configs.config[configs.last]
 })
 
 io.sockets.on('connection', function (socket) {
+  socket.emit('config', sconfig)
   socket.on('power', async function(data) {
     //console.log('power' + data)    
     if (data && !busy){

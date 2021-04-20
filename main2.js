@@ -19,8 +19,10 @@ var busy             = false
 
 var bandtime         = 1000
 var filltime         = 1000
+var envases          = 4
 
-var configs           = null
+var configs          = null
+var sconfig          = null
 
 http.listen(80)
 
@@ -30,7 +32,17 @@ app.get('/', function(req, res) {
 
 app.use('/', express.static(public))
 
+fs.readFile('configs.json', 'utf8' , (err, data) => {
+  if (err) {
+    console.error(err)
+    return
+  }
+  configs = JSON.parse(data)
+  sconfig = configs.config[configs.last]
+})
+
 io.sockets.on('connection', function (socket) {
+  socket.emit('config', sconfig)
   socket.on('power', async function(data) {
     //console.log('power' + data)    
     if (data && !busy){
