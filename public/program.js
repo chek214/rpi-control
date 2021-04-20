@@ -44,7 +44,7 @@ window.addEventListener("load", function(){ //when page loads
   mem1.addEventListener("click", function() {
     console.log('mem1')
     //config.name = 1
-    socket.emit('saveconfig', config)
+    socket.emit('saveconfig', this.config)
   })
   mem2.addEventListener("click", function() {
     console.log('mem2')
