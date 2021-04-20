@@ -1,6 +1,6 @@
 var power = false
 app.power = false
-var config = "configggg"
+var config = {}
 var configreceived = false
 var socket = io()
 window.addEventListener("load", function(){ //when page loads
@@ -8,11 +8,20 @@ window.addEventListener("load", function(){ //when page loads
   var poweroff = document.getElementById("poweroff")
   var saveconfig = document.getElementById("saveconfig")
   var readconfig = document.getElementById("readconfig")
+  var mem1 = document.getElementById("mem1")
+  var mem2 = document.getElementById("mem2")
+  var mem3 = document.getElementById("mem3")
 
   socket.on("config", function(data) {
     app.bandtime = Number(data.bandtime)
     app.filltime = Number(data.filltime)
     app.envases = Number(data.envases)
+    config = {
+      bandtime: Number(data.bandtime),
+      filltime: Number(data.filltime),
+      envases: Number(data.envases),
+      name: Number(data.name)
+    }
     configreceived = true
   })
 
@@ -33,6 +42,21 @@ window.addEventListener("load", function(){ //when page loads
   readconfig.addEventListener("click", function() { 
     console.log('readconfig', config)
     socket.emit('readconfig', config)
+  })
+  mem1.addEventListener("click", function() {
+    console.log('mem1')
+    config.name = 1
+    socket.emit('saveconfig', config)
+  })
+  mem2.addEventListener("click", function() {
+    console.log('mem2')
+    config.name = 1
+    socket.emit('saveconfig', config)
+  })
+  mem3.addEventListener("click", function() {
+    console.log('mem3')
+    config.name = 1
+    socket.emit('saveconfig', config)
   })
   setInterval(function(){
     socket.emit('power', power)
