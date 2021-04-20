@@ -16,12 +16,10 @@ window.addEventListener("load", function(){ //when page loads
     app.bandtime = Number(data.bandtime)
     app.filltime = Number(data.filltime)
     app.envases = Number(data.envases)
-    config = {
-      bandtime: Number(data.bandtime),
-      filltime: Number(data.filltime),
-      envases: Number(data.envases),
-      name: Number(data.name)
-    }
+    config.bandtime = Number(data.bandtime),
+    config.filltime = Number(data.filltime),
+    config.envases = Number(data.envases),
+    config.name = Number(data.name)
     configreceived = true
   })
 
