@@ -42,7 +42,9 @@ fs.readFile('configs.json', 'utf8' , (err, data) => {
 })
 
 io.sockets.on('connection', function (socket) {
-  socket.emit('config', sconfig)
+  socket.on('config', function() {
+    socket.emit('config', sconfig)
+  })
   socket.on('power', async function(data) {
     //console.log('power' + data)    
     if (data && !busy){

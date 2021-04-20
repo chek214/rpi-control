@@ -12,6 +12,7 @@ window.addEventListener("load", function(){ //when page loads
   var mem2 = document.getElementById("mem2")
   var mem3 = document.getElementById("mem3")
 
+  socket.emit('config')
   socket.on("config", function(data) {
     app.bandtime = Number(data.bandtime)
     app.filltime = Number(data.filltime)
