@@ -16,11 +16,12 @@ window.addEventListener("load", function(){ //when page loads
     app.bandtime = Number(data.bandtime)
     app.filltime = Number(data.filltime)
     app.envases = Number(data.envases)
-    config.bandtime = Number(data.bandtime),
-    config.filltime = Number(data.filltime),
-    config.envases = Number(data.envases),
+    config.bandtime = Number(data.bandtime)
+    config.filltime = Number(data.filltime)
+    config.envases = Number(data.envases)
     config.name = Number(data.name)
     configreceived = true
+    console.log(config) 
   })
 
   poweron.addEventListener("click", function() {
@@ -44,7 +45,7 @@ window.addEventListener("load", function(){ //when page loads
   mem1.addEventListener("click", function() {
     console.log('mem1')
     //config.name = 1
-    socket.emit('saveconfig', this.config)
+    socket.emit('saveconfig', config)
   })
   mem2.addEventListener("click", function() {
     console.log('mem2')
