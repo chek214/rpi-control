@@ -32,8 +32,8 @@
     <div>tiempo llenado<button class="timebutton" @click="ftime(-100)">-</button><button class="timebutton" @click="ftime(+100)">+</button>{{filltime/1000}}</div>
     <div>envases por charola<button class="timebutton" @click="tray(-1)">-</button><button class="timebutton" @click="tray(+1)">+</button>{{envases}}</div>
     <div>
-      <button @click="gosave()">guardar configuraciones</button>
-      <button @click="goread()">leer configuracion</button>
+      <button class="buttongosave" @click="gosave()">guardar configuraciones</button>
+      <button class="buttongoread" @click="goread()">leer configuracion</button>
     </div>
   </div>
   <div v-show="savesettings">

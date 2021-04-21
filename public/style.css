@@ -72,3 +72,19 @@
     font-size: x-large;
     text-align: center;
   }
+
+  .buttongosave {
+    width: 60mm;
+    height: 20mm;
+    margin: 2mm 2mm 2mm 2mm;
+    font-size: x-large;
+    text-align: center;
+  }
+
+  .buttongoread {
+    width: 60mm;
+    height: 20mm;
+    margin: 2mm 2mm 2mm 2mm;
+    font-size: x-large;
+    text-align: center;
+  }
