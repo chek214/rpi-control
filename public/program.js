@@ -39,16 +39,25 @@ window.addEventListener("load", function(){ //when page loads
   mem1.addEventListener("click", function() {
     console.log('mem1')
     config.name = 0
+    config.envases = app.envases
+    config.bandtime = app.bandtime
+    config.filltime = app.filltime
     socket.emit('saveconfig', config)
   })
   mem2.addEventListener("click", function() {
     console.log('mem2')
     config.name = 1
+    config.envases = app.envases
+    config.bandtime = app.bandtime
+    config.filltime = app.filltime
     socket.emit('saveconfig', config)
   })
   mem3.addEventListener("click", function() {
     console.log('mem3')
     config.name = 2
+    config.envases = app.envases
+    config.bandtime = app.bandtime
+    config.filltime = app.filltime
     socket.emit('saveconfig', config)
   })
   rmem1.addEventListener("click", function() {
