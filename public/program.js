@@ -46,17 +46,32 @@ window.addEventListener("load", function(){ //when page loads
   mem1.addEventListener("click", function() {
     console.log('mem1')
     //config.name = 1
-    socket.emit('saveconfig', config)
+    socket.emit('saveconfig', config, 0)
   })
   mem2.addEventListener("click", function() {
     console.log('mem2')
     //config.name = 1
-    socket.emit('saveconfig', config)
+    socket.emit('saveconfig', config, 1)
   })
   mem3.addEventListener("click", function() {
     console.log('mem3')
     //config.name = 1
-    socket.emit('saveconfig', config)
+    socket.emit('saveconfig', config, 2)
+  })
+  rmem1.addEventListener("click", function() {
+    console.log('rmem1')
+    //config.name = 1
+    socket.emit('readconfig', config, 0)
+  })
+  rmem2.addEventListener("click", function() {
+    console.log('rmem2')
+    //config.name = 1
+    socket.emit('readconfig', config, 1)
+  })
+  rmem3.addEventListener("click", function() {
+    console.log('rmem3')
+    //config.name = 1
+    socket.emit('readconfig', config, 2)
   })
   setInterval(function(){
     socket.emit('power', power)
