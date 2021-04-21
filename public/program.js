@@ -6,8 +6,6 @@ var socket = io()
 window.addEventListener("load", function(){ //when page loads
   var poweron = document.getElementById("poweron")
   var poweroff = document.getElementById("poweroff")
-  var saveconfig = document.getElementById("saveconfig")
-  var readconfig = document.getElementById("readconfig")
   var mem1 = document.getElementById("mem1")
   var mem2 = document.getElementById("mem2")
   var mem3 = document.getElementById("mem3")
@@ -37,14 +35,6 @@ window.addEventListener("load", function(){ //when page loads
     console.log('poweroff')
     power = false
     app.power = false
-  })
-  saveconfig.addEventListener("click", function() { 
-    console.log('saveconfig', config)
-    socket.emit('saveconfig', config)
-  })
-  readconfig.addEventListener("click", function() { 
-    console.log('readconfig', config)
-    socket.emit('readconfig', config)
   })
   mem1.addEventListener("click", function() {
     console.log('mem1')
