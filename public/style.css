@@ -70,4 +70,6 @@
     height: 15mm;
     margin: 2mm 2mm 2mm 2mm;
     font-size: xx-large;
+    text-align: center;
+    display:flex;
   }
