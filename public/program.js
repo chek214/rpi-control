@@ -11,6 +11,9 @@ window.addEventListener("load", function(){ //when page loads
   var mem1 = document.getElementById("mem1")
   var mem2 = document.getElementById("mem2")
   var mem3 = document.getElementById("mem3")
+  var rmem1 = document.getElementById("rmem1")
+  var rmem2 = document.getElementById("rmem2")
+  var rmem3 = document.getElementById("rmem3")
 
   socket.emit('config')
   socket.on("config", function(data) {
