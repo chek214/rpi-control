@@ -108,15 +108,14 @@ io.sockets.on('connection', function (socket) {
     })
 
     socket.on('readconfig', function(name) {
-      // fs.readFile('configs.json', 'utf8', (err, data) => {
-      //   if (err) {
-      //         console.error(err)
-      //         return
-      //   }
-      //   configs = JSON.parse(data)
-      //   console.log(configs.config[0].bandtime)
-      // })
-      console.log(name)
+       fs.readFile('configs.json', 'utf8', (err, data) => {
+         if (err) {
+               console.error(err)
+               return
+         }
+         configs = JSON.parse(data)
+         socket.emit('config', configs.config[name])
+       })
     })
 
 
