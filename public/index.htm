@@ -167,6 +167,17 @@ var app = new Vue({
     save(mem) {
 
     }
+  },
+  watch: {
+    bandtime: function () {
+      this.gosettings()
+    },
+    filltime: function () {
+      this.gosettings()
+    },
+    envases: function () {
+      this.gosettings()
+    }
   }
 })
 </script>
