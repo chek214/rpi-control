@@ -61,17 +61,17 @@ window.addEventListener("load", function(){ //when page loads
   rmem1.addEventListener("click", function() {
     console.log('rmem1')
     //config.name = 1
-    socket.emit('readconfig', config, 0)
+    socket.emit('readconfig', 0)
   })
   rmem2.addEventListener("click", function() {
     console.log('rmem2')
     //config.name = 1
-    socket.emit('readconfig', config, 1)
+    socket.emit('readconfig', 1)
   })
   rmem3.addEventListener("click", function() {
     console.log('rmem3')
     //config.name = 1
-    socket.emit('readconfig', config, 2)
+    socket.emit('readconfig', 2)
   })
   setInterval(function(){
     socket.emit('power', power)
