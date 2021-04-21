@@ -38,32 +38,29 @@ window.addEventListener("load", function(){ //when page loads
   })
   mem1.addEventListener("click", function() {
     console.log('mem1')
-    //config.name = 1
-    socket.emit('saveconfig', config, 0)
+    config.name = 0
+    socket.emit('saveconfig', config)
   })
   mem2.addEventListener("click", function() {
     console.log('mem2')
-    //config.name = 1
-    socket.emit('saveconfig', config, 1)
+    config.name = 1
+    socket.emit('saveconfig', config)
   })
   mem3.addEventListener("click", function() {
     console.log('mem3')
-    //config.name = 1
-    socket.emit('saveconfig', config, 2)
+    config.name = 2
+    socket.emit('saveconfig', config)
   })
   rmem1.addEventListener("click", function() {
     console.log('rmem1')
-    //config.name = 1
     socket.emit('readconfig', 0)
   })
   rmem2.addEventListener("click", function() {
     console.log('rmem2')
-    //config.name = 1
     socket.emit('readconfig', 1)
   })
   rmem3.addEventListener("click", function() {
     console.log('rmem3')
-    //config.name = 1
     socket.emit('readconfig', 2)
   })
   setInterval(function(){

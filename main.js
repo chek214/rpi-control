@@ -97,14 +97,15 @@ io.sockets.on('connection', function (socket) {
     filltime = data
   })
 
-  socket.on('saveconfig', function(data) {
+  socket.on('saveconfig', function(config) {
     if (configs !== null){
-    //  fs.writeFile('configs.json', JSON.stringify(configs), function (err) {
-    //    if (err) return console.log(err)
-    //    console.log('saved')
-    // })
+      configs.config[config.name] = config
+      fs.writeFile('configs.json', JSON.stringify(configs), function (err) {
+        if (err) return console.log(err)
+        console.log('saved')
+     })
     }
-    console.log(data)
+    console.log(configs)
     })
 
     socket.on('readconfig', function(name) {
