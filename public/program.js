@@ -42,6 +42,8 @@ window.addEventListener("load", function(){ //when page loads
     config.envases = app.envases
     config.bandtime = app.bandtime
     config.filltime = app.filltime
+    app.settings = true
+    app.savesettings = false
     socket.emit('saveconfig', config)
   })
   mem2.addEventListener("click", function() {
@@ -50,6 +52,8 @@ window.addEventListener("load", function(){ //when page loads
     config.envases = app.envases
     config.bandtime = app.bandtime
     config.filltime = app.filltime
+    app.settings = true
+    app.savesettings = false
     socket.emit('saveconfig', config)
   })
   mem3.addEventListener("click", function() {
@@ -58,6 +62,8 @@ window.addEventListener("load", function(){ //when page loads
     config.envases = app.envases
     config.bandtime = app.bandtime
     config.filltime = app.filltime
+    app.settings = true
+    app.savesettings = false
     socket.emit('saveconfig', config)
   })
   rmem1.addEventListener("click", function() {
