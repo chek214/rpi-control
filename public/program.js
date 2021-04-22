@@ -69,19 +69,19 @@ window.addEventListener("load", function(){ //when page loads
   rmem1.addEventListener("click", function() {
     console.log('rmem1')
     app.settings = true
-    app.readsettings = false
+    app.retrievesettings = false
     socket.emit('readconfig', 0)
   })
   rmem2.addEventListener("click", function() {
     console.log('rmem2')
     app.settings = true
-    app.readsettings = false
+    app.retrievesettings = false
     socket.emit('readconfig', 1)
   })
   rmem3.addEventListener("click", function() {
     console.log('rmem3')
     app.settings = true
-    app.readsettings = false
+    app.retrievesettings = false
     socket.emit('readconfig', 2)
   })
   setInterval(function(){
