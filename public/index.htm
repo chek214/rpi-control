@@ -35,20 +35,20 @@
       {{bandtime/1000}}
     </div>
     <div>
-      <h3>tiempo llenadoz</h3>
+      <h3>Tiempo Llenado</h3>
       <button class="timebutton" @click="ftime(-100)">-</button>
       <button class="timebutton" @click="ftime(+100)">+</button>
       {{filltime/1000}}
     </div>
     <div>
-      <h3>envases por charola</h3>
+      <h3>Envases por Charola</h3>
       <button class="timebutton" @click="tray(-1)">-</button>
       <button class="timebutton" @click="tray(+1)">+</button>
       {{envases}}
     </div>
     <div>
-      <button class="buttongosave" @click="gosave()">guardar configuraciones</button>
-      <button class="buttongoread" @click="goread()">leer configuracion</button>
+      <button class="buttongosave" @click="gosave()">Guardar configuraciones</button>
+      <button class="buttongoread" @click="goread()">Leer configuracion</button>
     </div>
   </div>
   <div v-show="savesettings">
