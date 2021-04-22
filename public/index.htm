@@ -175,21 +175,21 @@ var app = new Vue({
     },
     filltime: function () {
       if (this.envases == 21 && this.filltime == 2800){
-        visibleband = true
+        this.visibleband = true
         console.log('band visible')
       }
       else {
-        visibleband = false
+        this.visibleband = false
         console.log('band not visible')
       }
     },
     envases: function () {
       if (this.envases == 21 && this.filltime == 2800){
-        visibleband = true
+        this.visibleband = true
         console.log('band visible')
       }
       else {
-        visibleband = false
+        this.visibleband = false
         console.log('band not visible')
       }
     }
