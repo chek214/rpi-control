@@ -50,33 +50,33 @@ io.sockets.on('connection', function (socket) {
     if (data && !busy){
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
         busy = true
-        band.writeSync(1)
+        band.writeSync(0)
         //console.log('move band')
         await sleep(bandtime)
-        band.writeSync(0)
+        band.writeSync(1)
         //console.log('stop band')
         await sleep(bandtime)
         busy = false
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 0) {
         busy = true
-        fill.writeSync(1)
+        fill.writeSync(0)
         //console.log('fill')
         await sleep(filltime)
-        fill.writeSync(0)
+        fill.writeSync(1)
         //console.log('stop fill')
         await sleep(filltime)
         busy = false
       }
       else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
         //console.log('do nothing 0 1')
-        band.writeSync(0)
-        fill.writeSync(0)
+        band.writeSync(1)
+        fill.writeSync(1)
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 1) {
         //console.log('do nothing 1 1')
-        band.writeSync(0)
-        fill.writeSync(0)
+        band.writeSync(1)
+        fill.writeSync(1)
       }
     }
   })
