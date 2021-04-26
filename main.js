@@ -124,9 +124,9 @@ io.sockets.on('connection', function (socket) {
 
 
 process.on('SIGINT', function () { 
-  band.writeSync(0) 
+  band.writeSync(1) 
   band.unexport()
-  fill.writeSync(0) 
+  fill.writeSync(1) 
   fill.unexport()
   fillsensor.unexport()
   arrivalsensor.unexport()
