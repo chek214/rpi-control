@@ -14,6 +14,9 @@ var fill             = new Gpio(27, 'out')
 var fillsensor       = new Gpio(4, 'in', 'both') 
 var arrivalsensor    = new Gpio(17, 'in', 'both') 
 
+band.writeSync(1)
+fill.writeSync(1)
+
 var power            = false
 var busy             = false
 
