@@ -1,13 +1,11 @@
-var express = require('express')
-var path = require('path')
-var public = path.join(__dirname, 'public')
-var app     = express()
-var http = require('http').Server(app)
-var fs = require('fs')
-var io = require('socket.io')(http, {
-  allowEIO3: true 
-})
-var Gpio = require('onoff').Gpio
+var express          = require('express')
+var path             = require('path')
+var public           = path.join(__dirname, 'public')
+var app              = express()
+var http             = require('http').Server(app)
+var fs               = require('fs')
+var io               = require('socket.io')(http, {allowEIO3: true})
+var Gpio             = require('onoff').Gpio
 
 var band             = new Gpio(22, 'out')
 var fill             = new Gpio(27, 'out')
@@ -120,6 +118,10 @@ io.sockets.on('connection', function (socket) {
          configs = JSON.parse(data)
          socket.emit('config', configs.config[name])
        })
+    })
+
+    socket.on('poweroffsys', function(data) {   
+      SVGFEMorphologyElement.exec('sudo shutdown now')
     })
 
 

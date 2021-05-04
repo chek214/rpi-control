@@ -6,6 +6,7 @@ var socket = io()
 window.addEventListener("load", function(){ //when page loads
   var poweron = document.getElementById("poweron")
   var poweroff = document.getElementById("poweroff")
+  var poweroffsys =document.getElementById("poweroffsys")
   var mem1 = document.getElementById("mem1")
   var mem2 = document.getElementById("mem2")
   var mem3 = document.getElementById("mem3")
@@ -83,6 +84,9 @@ window.addEventListener("load", function(){ //when page loads
     app.settings = true
     app.retrievesettings = false
     socket.emit('readconfig', 2)
+  })
+  poweroffsys.addEventListener("click", function() {
+    socket.emit('poweroffsys')
   })
   setInterval(function(){
     socket.emit('power', power)
