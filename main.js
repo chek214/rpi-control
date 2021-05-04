@@ -121,7 +121,7 @@ io.sockets.on('connection', function (socket) {
     })
 
     socket.on('poweroffsys', function(data) {   
-      SVGFEMorphologyElement.exec('sudo shutdown now')
+      shell.exec('sudo shutdown now')
     })
 
 
