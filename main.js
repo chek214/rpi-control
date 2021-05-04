@@ -7,6 +7,8 @@ var fs               = require('fs')
 var io               = require('socket.io')(http, {allowEIO3: true})
 var Gpio             = require('onoff').Gpio
 
+const { exec } = require("child_process")
+
 var band             = new Gpio(22, 'out')
 var fill             = new Gpio(27, 'out')
 var fillsensor       = new Gpio(4, 'in', 'both') 
@@ -122,7 +124,7 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('poweroffsys', function(data) {
       console.log('shuting down')   
-      shell.exec('sudo shutdown now')
+      exec('sudo shutdown now')
     })
 
 
