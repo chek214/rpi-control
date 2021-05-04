@@ -120,7 +120,8 @@ io.sockets.on('connection', function (socket) {
        })
     })
 
-    socket.on('poweroffsys', function(data) {   
+    socket.on('poweroffsys', function(data) {
+      console.log('shuting down')   
       shell.exec('sudo shutdown now')
     })
 
