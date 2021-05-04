@@ -49,6 +49,7 @@
     <div>
       <button class="buttongosave" @click="gosave()">Guardar configuraciones</button>
       <button class="buttongoread" @click="goread()">Leer configuracion</button>
+      <button class="buttonpoweroffsys" id="poweroffsys">Apagar equipo</button>
     </div>
   </div>
   <div v-show="savesettings">
@@ -97,9 +98,9 @@ var app = new Vue({
       },
       {
         id: 3,
-        name: 'poweroffsys',
-        img: 'poweroff.svg',
-        alt: 'Apagar sistema',
+        name: '',
+        img: 'white.svg',
+        alt: '',
       },
       {
         id: 4,
