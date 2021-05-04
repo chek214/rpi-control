@@ -86,6 +86,7 @@ window.addEventListener("load", function(){ //when page loads
     socket.emit('readconfig', 2)
   })
   poweroffsys.addEventListener("click", function() {
+    console.log('poweroffsys')
     socket.emit('poweroffsys')
   })
   setInterval(function(){
