@@ -7,7 +7,7 @@ var fs               = require('fs')
 var io               = require('socket.io')(http, {allowEIO3: true})
 var Gpio             = require('onoff').Gpio
 
-const { exec } = require("child_process")
+const { exec }       = require("child_process")
 
 var band             = new Gpio(22, 'out')
 var fill             = new Gpio(27, 'out')
@@ -42,6 +42,7 @@ fs.readFile('configs.json', 'utf8' , (err, data) => {
   }
   configs = JSON.parse(data)
   sconfig = configs.config[configs.last]
+  console.log('file read init')
 })
 
 io.sockets.on('connection', function (socket) {
