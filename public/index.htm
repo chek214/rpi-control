@@ -16,6 +16,9 @@
      <div v-if="!power">
        Apagado
     </div>
+    <div>
+      Total de envases llenados: {{totalenvases}}
+    </div>  
     <div class="buttonrow">
       <div v-for="button in buttons" class="buttondiv" :id="button.name">
         <span class="buttonhelper"></span>
@@ -124,7 +127,8 @@ var app = new Vue({
     envases: 1,
     power: false,
     bandtime: 4000,
-    filltime: 2000
+    filltime: 2000,
+    totalenvases: 0
   },
   methods: {
     gosettings: function () {

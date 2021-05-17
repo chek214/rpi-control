@@ -25,6 +25,8 @@ var bandtime         = 4000
 var filltime         = 2000
 var envases          = 4
 
+var totalenvases     = 0
+
 var configs          = null
 var sconfig          = null
 
@@ -75,7 +77,7 @@ io.sockets.on('connection', function (socket) {
           busy = false
           filled = false
         }
-	else {
+	      else {
         busy = true
         fill.writeSync(1)
         //console.log('fill')
@@ -85,7 +87,8 @@ io.sockets.on('connection', function (socket) {
         await sleep(filltime)
         busy = false
         filled = true
-	}
+        countenvases()
+	      }
       }
       else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
         //console.log('do nothing 0 1')
@@ -105,6 +108,11 @@ io.sockets.on('connection', function (socket) {
       setTimeout(resolve, ms)
     })
   } 
+
+  function countenvases() {
+    totalenvases = totalenvases + envases
+    socket.emit('totalenvases', totalenvases)
+  }
 
   socket.on('bandtime', function(data) {
     //console.log('bandtime' + data) 

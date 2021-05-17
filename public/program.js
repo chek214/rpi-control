@@ -27,6 +27,10 @@ window.addEventListener("load", function(){ //when page loads
     console.log(config) 
   })
 
+  socket.on('totalenvases', function(data) {
+    app.totalenvases = Number(data)
+  })
+
   poweron.addEventListener("click", function() {
     console.log('poweron')
     power = true
