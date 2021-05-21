@@ -45,24 +45,23 @@ fs.readFile(path.resolve(__dirname, 'configs.json'), 'utf8' , (err, data) => {
   }
   configs = JSON.parse(data)
   sconfig = configs.config[configs.last]
-  console.log('file read init')
 })
 
 io.sockets.on('connection', function (socket) {
   socket.on('config', function() {
     socket.emit('config', sconfig)
   })
-  socket.on('power', async function(data) {
-    //console.log('power' + data)    
+  socket.on('power', async function(data) {   
     if (data && !busy){
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
+        if(!filled)
+        {
+          await sleep(bandtime)
+        }
         busy = true
         band.writeSync(1)
-        //console.log('move band')
         await sleep(bandtime)
         band.writeSync(0)
-        //console.log('stop band')
-        await sleep(bandtime)
         busy = false
         filled = false
       }
@@ -73,32 +72,28 @@ io.sockets.on('connection', function (socket) {
           band.writeSync(1)
           await sleep(bandtime)
           band.writeSync(0)
-          await sleep(bandtime)
           busy = false
           filled = false
         }
 	      else {
         busy = true
         fill.writeSync(1)
-        //console.log('fill')
         await sleep(filltime)
         fill.writeSync(0)
-        //console.log('stop fill')
-        await sleep(filltime)
         busy = false
         filled = true
         countenvases()
 	      }
       }
       else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
-        //console.log('do nothing 0 1')
         band.writeSync(0)
         fill.writeSync(0)
+        await sleep(bandtime)
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 1) {
-        //console.log('do nothing 1 1')
         band.writeSync(0)
         fill.writeSync(0)
+        await sleep(bandtime)
       }
     }
   })
@@ -115,12 +110,10 @@ io.sockets.on('connection', function (socket) {
   }
 
   socket.on('bandtime', function(data) {
-    //console.log('bandtime' + data) 
     bandtime = data
   })
 
   socket.on('filltime', function(data) {
-    //console.log('filltime' + data)    
     filltime = data
   })
 
@@ -129,7 +122,6 @@ io.sockets.on('connection', function (socket) {
       configs.config[config.name] = config
       fs.writeFile('configs.json', JSON.stringify(configs), function (err) {
         if (err) return console.log(err)
-        console.log('saved')
      })
     }
     console.log(configs)

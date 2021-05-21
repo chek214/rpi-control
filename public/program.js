@@ -4,26 +4,26 @@ var config = {}
 var configreceived = false
 var socket = io()
 window.addEventListener("load", function(){ //when page loads
-  var poweron = document.getElementById("poweron")
-  var poweroff = document.getElementById("poweroff")
-  var poweroffsys = document.getElementById("poweroffsys")
-  var mem1 = document.getElementById("mem1")
-  var mem2 = document.getElementById("mem2")
-  var mem3 = document.getElementById("mem3")
-  var rmem1 = document.getElementById("rmem1")
-  var rmem2 = document.getElementById("rmem2")
-  var rmem3 = document.getElementById("rmem3")
+  var poweron              = document.getElementById("poweron")
+  var poweroff             = document.getElementById("poweroff")
+  var poweroffsys          = document.getElementById("poweroffsys")
+  var mem1                 = document.getElementById("mem1")
+  var mem2                 = document.getElementById("mem2")
+  var mem3                 = document.getElementById("mem3")
+  var rmem1                = document.getElementById("rmem1")
+  var rmem2                = document.getElementById("rmem2")
+  var rmem3                = document.getElementById("rmem3")
 
   socket.emit('config')
   socket.on("config", function(data) {
-    app.bandtime = Number(data.bandtime)
-    app.filltime = Number(data.filltime)
-    app.envases = Number(data.envases)
-    config.bandtime = Number(data.bandtime)
-    config.filltime = Number(data.filltime)
-    config.envases = Number(data.envases)
-    config.name = Number(data.name)
-    configreceived = true
+    app.bandtime           = Number(data.bandtime)
+    app.filltime           = Number(data.filltime)
+    app.envases            = Number(data.envases)
+    config.bandtime        = Number(data.bandtime)
+    config.filltime        = Number(data.filltime)
+    config.envases         = Number(data.envases)
+    config.name            = Number(data.name)
+    configreceived         = true
     console.log(config) 
   })
 
