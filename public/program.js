@@ -98,6 +98,7 @@ window.addEventListener("load", function(){ //when page loads
     if (configreceived){
       socket.emit('bandtime', app.bandtime)
       socket.emit('filltime', app.filltime)
+      socket.emit('envases', app.envases)
     }
   }, 200)
 })

@@ -117,6 +117,10 @@ io.sockets.on('connection', function (socket) {
     filltime = data
   })
 
+  socket.on('envases', function(data) {
+    envases = data
+  })
+
   socket.on('saveconfig', function(config) {
     if (configs !== null){
       configs.config[config.name] = config
