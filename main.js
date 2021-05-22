@@ -54,11 +54,11 @@ io.sockets.on('connection', function (socket) {
   socket.on('power', async function(data) {   
     if (data && !busy){
       if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 0) {
+        busy = true
         if(!filled)
         {
           await sleep(bandtime)
         }
-        busy = true
         band.writeSync(1)
         await sleep(bandtime)
         band.writeSync(0)
@@ -86,14 +86,18 @@ io.sockets.on('connection', function (socket) {
 	      }
       }
       else if (fillsensor.readSync() == 0 && arrivalsensor.readSync() == 1) {
+        busy = true
         band.writeSync(0)
         fill.writeSync(0)
         await sleep(bandtime)
+        busy = false
       }
       else if (fillsensor.readSync() == 1 && arrivalsensor.readSync() == 1) {
+        busy = true
         band.writeSync(0)
         fill.writeSync(0)
         await sleep(bandtime)
+        busy = false
       }
     }
   })
