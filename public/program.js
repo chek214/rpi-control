@@ -3,6 +3,7 @@ app.power = false
 var config = {}
 var configreceived = false
 var socket = io()
+
 window.addEventListener("load", function(){ //when page loads
   var poweron              = document.getElementById("poweron")
   var poweroff             = document.getElementById("poweroff")
