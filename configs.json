@@ -1,6 +1,6 @@
 {"config":[
     {"name":"0", "bandtime":"4500", "filltime":"1200", "envases":"4"},
-    {"name":"1", "bandtime":"4500", "filltime":"1200", "envases":"5"},
+    {"name":"1", "bandtime":"4500", "filltime":"1200", "envases":"8"},
     {"name":"2", "bandtime":"4500", "filltime":"1200", "envases":"4"}
     ],
  "last": "1"   
